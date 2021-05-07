@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Form from '../../components/form/Form'
 import Modal from '../../components/modal/Modal'
+import ProductsList from '../../components/productsList/ProductList'
 import modalActions from '../../redux/actions/modalActions'
 import productsOperations from '../../redux/operations/productsOperations'
 import { getModalContent } from '../../redux/selectors/modalSelector'
+import ProductsPageWrapper from './ProductsPageStyled'
 
 const ProductsPage = () => {
   const showModal = useSelector(getModalContent)
@@ -12,7 +14,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     dispatch(productsOperations.getProducts())
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, [])
 
   const handleClick = () => {
@@ -21,17 +23,19 @@ const ProductsPage = () => {
   }
 
   return (
-    <div>
-      <h1>ProductsPage</h1>
-      <button type="button" onClick={handleClick}>
-        New
-      </button>
+    <ProductsPageWrapper>
+      <div className="container">
+        <ProductsList />
+        <button type="button" onClick={handleClick} className="mainButton">
+          New
+        </button>
+      </div>
       {showModal === 'newProduct' && (
         <Modal>
-          <Form/>
+          <Form />
         </Modal>
       )}
-    </div>
+    </ProductsPageWrapper>
   )
 }
 

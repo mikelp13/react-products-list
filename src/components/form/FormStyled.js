@@ -1,24 +1,32 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
+
+  .characteristics {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .formFild {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    &:nth-child(2) {
-      margin-bottom: 30px;
-    }
+    margin-bottom: 10px;
   }
+
+  .row, .count {
+    width: 80px;
+  }
+
   .formText {
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 14px;
     color: #076c77;
   }
   .formInput {
-    height: 46px;
-    padding: 5px 20px;
+    height: 25px;
+    padding: 5px 10px;
     border: none;
     border-bottom: 1px solid #ccc;
     outline: none;
@@ -27,10 +35,6 @@ const FormStyled = styled.form`
     &:hover {
       border-color: #024f94;
     }
-  }
-
-  button {
-    margin: 0 auto;
   }
 
   .formTextArea {
@@ -48,5 +52,10 @@ const FormStyled = styled.form`
       border-color: #024f94;
     }
   }
-`;
-export default FormStyled;
+  .buttonGroup {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+  }
+`
+export default FormStyled

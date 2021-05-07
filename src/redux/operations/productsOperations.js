@@ -33,12 +33,21 @@ const getProducts = () => async dispatch => {
   }
 };
 
+const deleteProduct = id => async dispatch => {
+  dispatch(productsActions.deleteProductRequest());
 
+  try {
+    await axios.delete(`/products/${id}.json`);
+    dispatch(productsActions.deleteProductSuccess(id));
+  } catch (error) {
+    dispatch(productsActions.deleteProductError(error));
+  }
+};
 
 const productsOperations = {
   addNewProduct,
   getProducts,
-  // deleteProduct,
+  deleteProduct,
   // editProduct,
 };
 export default productsOperations;

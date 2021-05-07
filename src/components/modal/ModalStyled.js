@@ -24,13 +24,11 @@ const ModalWindow = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
+    min-width: 50%;
     min-height: 50px;
     box-shadow: 0px 22px 40px 0px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    z-index: 12000;
-
- 
-
+    padding: 20px;
+    z-index: 1000;
   }
 `
 export default ModalWindow

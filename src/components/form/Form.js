@@ -6,7 +6,8 @@ import FormStyled from './FormStyled'
 
 const initialState = {
   name: 'iphone',
-  imageUrl: 'https://i.pinimg.com/originals/8d/fc/a2/8dfca2d45fda9af450d8b4d04a4ea117.jpg',
+  imageUrl:
+    'https://cdn.shopify.com/s/files/1/0403/9337/5899/products/ezgif.com-gif-maker_1024x1024@2x.jpg?v=1618519737',
   count: 2,
   width: 234,
   height: 69,
@@ -25,7 +26,7 @@ const Form = () => {
 
   const handelSubmit = e => {
     e.preventDefault()
-    const { imageUrl, name, count, width, height, weight } = state
+    const { imageUrl, name, count, width, height, weight, description } = state
     const newProduct = {
       imageUrl,
       name,
@@ -35,6 +36,7 @@ const Form = () => {
         height: Number(height),
       },
       weight,
+      description,
       comments: [],
     }
 
@@ -44,6 +46,7 @@ const Form = () => {
   const handleClick = () => {
     dispatch(modalActions.setModalContent(''))
     dispatch(modalActions.toggleModal())
+    document.body.style.overflow = 'visible'
   }
 
   return (
@@ -73,7 +76,7 @@ const Form = () => {
       <label className="formFild">
         <span className="formText">Product count: </span>
         <input
-          className="formInput"
+          className="formInput count"
           placeholder="..."
           type="number"
           name="count"
@@ -81,39 +84,42 @@ const Form = () => {
           onChange={handelChange}
         />
       </label>
-      <label className="formFild">
-        <span className="formText">Width: </span>
-        <input
-          className="formInput"
-          placeholder="..."
-          type="number"
-          name="width"
-          value={state.width}
-          onChange={handelChange}
-        />
-      </label>
-      <label className="formFild">
-        <span className="formText"> Height: </span>
-        <input
-          className="formInput"
-          placeholder="..."
-          type="number"
-          name="height"
-          value={state.height}
-          onChange={handelChange}
-        />
-      </label>
-      <label className="formFild">
-        <span className="formText"> Weight: </span>
-        <input
-          className="formInput"
-          placeholder="..."
-          type="text"
-          name="weight"
-          value={state.weight}
-          onChange={handelChange}
-        />
-      </label>
+      <div className="characteristics">
+        <label className="formFild row">
+          <span className="formText">Width: </span>
+          <input
+            className="formInput"
+            placeholder="..."
+            type="number"
+            name="width"
+            value={state.width}
+            onChange={handelChange}
+          />
+        </label>
+
+        <label className="formFild row">
+          <span className="formText"> Height: </span>
+          <input
+            className="formInput"
+            placeholder="..."
+            type="number"
+            name="height"
+            value={state.height}
+            onChange={handelChange}
+          />
+        </label>
+        <label className="formFild row">
+          <span className="formText"> Weight: </span>
+          <input
+            className="formInput"
+            placeholder="..."
+            type="text"
+            name="weight"
+            value={state.weight}
+            onChange={handelChange}
+          />
+        </label>
+      </div>
       <label className="formFild">
         <span className="formText">Description: </span>
         <textarea
@@ -126,13 +132,14 @@ const Form = () => {
           onChange={handelChange}
         />
       </label>
-      <button className="mainButton" type="submit">
-        Save
-      </button>
-
-      <button className="mainButton" type="button" onClick={handleClick}>
-        Cancel
-      </button>
+      <div className="buttonGroup">
+        <button className="secondaryButton" type="button" onClick={handleClick}>
+          Cancel
+        </button>
+        <button className="mainButton" type="submit">
+          Save
+        </button>
+      </div>
     </FormStyled>
   )
 }
