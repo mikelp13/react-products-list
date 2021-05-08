@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import productsActions from '../actions/productsActions';
 
 const deleteProduct = (state, action) =>
@@ -11,10 +12,20 @@ const onEditProduct = (state, action) =>
 
 const productsReducer = createReducer([], {
   [productsActions.addNewProductSuccess]: (state, {payload}) => [...state, payload],
+
   [productsActions.getProductsSuccess]: (_, {payload}) => payload,
   [productsActions.deleteProductSuccess]: deleteProduct,
   [productsActions.editProductSuccess]: onEditProduct,
  
 });
 
-export default productsReducer
+const productByIdReducer = createReducer('', {
+  [productsActions.getProductId]: (_, {payload}) => payload,
+});
+
+
+const mainReducer= combineReducers({
+  items: productsReducer,
+  currentProductId:productByIdReducer,
+});
+export default mainReducer

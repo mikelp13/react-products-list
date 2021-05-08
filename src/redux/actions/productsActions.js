@@ -16,7 +16,7 @@ const editProductRequest = createAction('product/editRequest');
 const editProductSuccess = createAction('product/editSuccess');
 const editProductError = createAction('product/editError');
 
-const getIdValue = createAction('products/getIdValue');
+const getProductId = createAction('products/getIdValue');
 
 const productsActions = {
   addNewProductRequest,
@@ -35,7 +35,7 @@ const productsActions = {
   editProductSuccess,
   editProductError,
 
-  getIdValue,
+  getProductId,
 };
 
 export default productsActions;
