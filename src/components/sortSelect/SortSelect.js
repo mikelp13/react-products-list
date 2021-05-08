@@ -1,19 +1,6 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { getProducts } from '../../redux/selectors/productSelectors'
+import React from 'react'
 
 const SortSelect = ({handleSort}) => {
-
-  // if (sort === 'name') {
-  //   return a.name.localeCompare(b.name)
-  // } else if (sort === 'count') {
-  //   return a.count - b.count
-  // } else {
-  //   return 0
-  // }
-
-
-
   return (
     <div>
       <select defaultValue="Sort" onChange={handleSort}>

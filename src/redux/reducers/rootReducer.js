@@ -3,11 +3,13 @@ import modalReducer from './modalReducer'
 import modalContentReducer from './modalContentReducer'
 import errorReducer from './errorReducer'
 import loadingReducer from './loadingReducer'
-import mainReducer from './productsReducer'
+import commentsReducer from './commentsReducer'
+import productsReducer from './productsReducer'
 
 
 const rootReducer = combineReducers({
-  products: mainReducer,
+  products: productsReducer,
+  comments: commentsReducer,
   modal: modalReducer,
   modalContent: modalContentReducer,
   loading:loadingReducer,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import modalActions from '../../redux/actions/modalActions'
 import productsOperations from '../../redux/operations/productsOperations'
 import FormStyled from './FormStyled'
@@ -37,7 +37,6 @@ const Form = () => {
       },
       weight,
       description,
-      comments: [],
     }
 
     dispatch(productsOperations.addNewProduct(newProduct))

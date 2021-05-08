@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import commentsActions from "../actions/commentsActions";
 import productsActions from "../actions/productsActions";
 
 const errorReducer = createReducer(null, {
@@ -13,6 +14,16 @@ const errorReducer = createReducer(null, {
 
   [productsActions.editProductError]: (_, action) => action.payload,
   [productsActions.editProductRequest]: () => null,
+
+  [commentsActions.addCommentError]: (_, action) => action.payload,
+  [commentsActions.addCommentRequest]: () => null,
+
+  [commentsActions.getCommentsError]: (_, action) => action.payload,
+  [commentsActions.getCommentsRequest]: () => null,
+
+  [commentsActions.deleteCommentError]: (_, action) => action.payload,
+  [commentsActions.deleteCommentRequest]: () => null,
+
 });
 
 export default errorReducer
