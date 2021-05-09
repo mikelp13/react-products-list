@@ -33,6 +33,21 @@ const getProducts = () => async dispatch => {
   }
 };
 
+
+const editProduct = (id, product) => async dispatch => {
+  dispatch(productsActions.editProductRequest());
+
+  try {
+    const { data } = await axios.put(
+      `/products/${id}.json`,
+      product,
+    );
+    dispatch(productsActions.editProductSuccess({ ...data, id }));
+  } catch (error) {
+    dispatch(productsActions.editProductError(error));
+  }
+};
+
 const deleteProduct = id => async dispatch => {
   dispatch(productsActions.deleteProductRequest());
 
@@ -47,7 +62,8 @@ const deleteProduct = id => async dispatch => {
 const productsOperations = {
   addNewProduct,
   getProducts,
+  editProduct,
   deleteProduct,
-  // editProduct,
+  
 };
 export default productsOperations;

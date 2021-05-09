@@ -1,31 +1,23 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
-import productsActions from '../actions/productsActions';
-
-const deleteProduct = (state, action) =>
-  state.filter(item => item.id !== action.payload);
-
-const onEditProduct = (state, action) =>
-  state.map(item =>
-    item.id === action.payload.id ? { ...action.payload } : item,
-  );
+import { createReducer } from '@reduxjs/toolkit'
+import { combineReducers } from 'redux'
+import productsActions from '../actions/productsActions'
 
 const productsReducer = createReducer([], {
-  [productsActions.addNewProductSuccess]: (state, {payload}) => [...state, payload],
+  [productsActions.addNewProductSuccess]: (state, { payload }) => [...state, payload],
+  [productsActions.getProductsSuccess]: (_, { payload }) => payload,
+  [productsActions.deleteProductSuccess]: (state, { payload }) =>
+    state.filter(item => item.id !== payload),
 
-  [productsActions.getProductsSuccess]: (_, {payload}) => payload,
-  [productsActions.deleteProductSuccess]: deleteProduct,
-  [productsActions.editProductSuccess]: onEditProduct,
- 
-});
+  [productsActions.editProductSuccess]: (state, { payload }) =>
+    state.map(item => (item.id === payload.id ? { ...payload } : item)),
+})
 
 const productByIdReducer = createReducer('', {
-  [productsActions.getProductId]: (_, {payload}) => payload,
-});
+  [productsActions.getProductId]: (_, { payload }) => payload,
+})
 
-
-const mainReducer= combineReducers({
+const mainReducer = combineReducers({
   items: productsReducer,
-  currentProductId:productByIdReducer,
-});
+  currentProductId: productByIdReducer,
+})
 export default mainReducer

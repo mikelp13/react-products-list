@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import modalActions from '../../redux/actions/modalActions'
 import productsOperations from '../../redux/operations/productsOperations'
 import FormStyled from './FormStyled'
@@ -15,8 +15,13 @@ const initialState = {
   description: 'Full screen smart flat panel home LCD 4k clear LCD TV off.',
 }
 
-const Form = () => {
-  const [state, setState] = useState({ ...initialState })
+const Form = ({ product }) => {
+  const formState = product
+    ? { ...product, width: product?.size.width, height: product?.size.height }
+    : { ...initialState }
+
+  const [state, setState] = useState({ ...formState })
+
   const dispatch = useDispatch()
 
   const handelChange = e => {
@@ -26,7 +31,9 @@ const Form = () => {
 
   const handelSubmit = e => {
     e.preventDefault()
+
     const { imageUrl, name, count, width, height, weight, description } = state
+
     const newProduct = {
       imageUrl,
       name,
@@ -39,7 +46,14 @@ const Form = () => {
       description,
     }
 
-    dispatch(productsOperations.addNewProduct(newProduct))
+    if (!product) {
+      dispatch(productsOperations.addNewProduct(newProduct))
+    } else {
+      dispatch(productsOperations.editProduct(product.id, newProduct))
+    }
+    dispatch(modalActions.setModalContent(''))
+    dispatch(modalActions.toggleModal())
+    document.body.style.overflow = 'visible'
   }
 
   const handleClick = () => {
