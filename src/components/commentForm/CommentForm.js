@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import commentsOperations from '../../redux/operations/commentsOperations'
+import { getProductId } from '../../redux/selectors/productSelectors'
 import CommentFormContainer from './CommentFormStyled'
 
 const CommentForm = () => {
   const [comment, setComment] = useState('')
-
+  const productId = useSelector(getProductId)
   const dispatch = useDispatch()
 
   const handelChange = e => {
     setComment(e.target.value)
   }
-  const newComment = {
-    productId: '-M_BR-J7KWaNSnI81e6A',
-    description: 'some text here',
-    date: '16:30 23.08.2021',
-  }
+
   const handelSubmit = (e) => {
     e.preventDefault()
+
+    const newComment = {
+      productId,
+      description: comment,
+      date: new Date().toLocaleString(),
+    }
     dispatch(commentsOperations.addComment(newComment))
 
   }

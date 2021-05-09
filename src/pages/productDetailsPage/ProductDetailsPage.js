@@ -12,6 +12,7 @@ import ProductDetails from '../../components/productDetails/ProductDetails'
 import { getModalContent } from '../../redux/selectors/modalSelector'
 import Modal from '../../components/modal/Modal'
 import Form from '../../components/form/Form'
+import CommentsList from '../../components/commentsList/CommentsList'
 
 const ProductDetailsPage = () => {
   const products = useSelector(getProducts)
@@ -35,7 +36,9 @@ const ProductDetailsPage = () => {
           </p>
         )}
         {productId && <ProductDetails {...product} />}
-        <CommentForm />
+         <CommentsList />
+        {productId && <CommentForm />}
+     
       </div>
       {showModal === 'editProduct' && (
         <Modal>
