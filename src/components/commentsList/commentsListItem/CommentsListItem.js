@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import commentsOperations from '../../../redux/operations/commentsOperations'
+import CrossIcon from '../../icons/CrossIcon'
 import DeleteIcon from '../../icons/DeleteIcon'
 
 const CommentsListItem = ({ id, date, description }) => {
@@ -20,7 +21,7 @@ const CommentsListItem = ({ id, date, description }) => {
         onClick={handleDeleteComment}
         className="deleteButton"
       >
-        <DeleteIcon className="deleteIcon" />
+        <CrossIcon className="deleteIcon" />
       </button>
     </li>
   )
