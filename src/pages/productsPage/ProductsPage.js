@@ -41,7 +41,7 @@ const ProductsPage = () => {
       <div className="container">
         <SortSelect handleSort={handleSort}/>
         <ProductsList products={sort ? sortedProducts : products}/>
-        <button type="button" onClick={handleClick} className="mainButton">
+        <button type="button" onClick={handleClick} className="mainButton addProduct">
           New
         </button>
       </div>

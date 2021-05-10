@@ -6,14 +6,13 @@ export const Wrapper = styled.div`
   }
   li {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 3px;
     &:not(:last-child) {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     img {
@@ -24,7 +23,7 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      margin-right: 10px;
+      margin-right: auto;
     }
     .title {
       margin-bottom: 10px;
@@ -36,16 +35,28 @@ export const Wrapper = styled.div`
 
     .descriptionContainer {
       margin-bottom: 10px;
- 
+     
+
       & .label {
         display: block;
         margin-bottom: 5px;
       }
+
+      .description {
+        max-width: 700px;
+      }
+    }
+
+    .buttonGroup {
+      display:flex;
+      align-items:center;
+
     }
     .detailsButton {
       padding: 5px;
       min-width: 90px;
       height: 30px;
+      margin-right: 30px;
     }
     .deleteButton {
       width: 50px;
