@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { getComments } from '../../redux/selectors/commentsSelector'
 import { getProductId } from '../../redux/selectors/productSelectors'
 import CommentsListItem from './commentsListItem/CommentsListItem'
+import CommentsWrapper from './CommentsListStyled'
 
 const CommentsList = () => {
   const productId = useSelector(getProductId)
@@ -11,9 +12,11 @@ const CommentsList = () => {
   )
 
   return (
+    <CommentsWrapper>
     <ul className="commentsList">
      {comments.map(comment => <CommentsListItem key={comment.id} {...comment}/>)} 
     </ul>
+    </CommentsWrapper>
   )
 }
 

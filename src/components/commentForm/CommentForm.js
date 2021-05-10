@@ -22,7 +22,7 @@ const CommentForm = () => {
       date: new Date().toLocaleString(),
     }
     dispatch(commentsOperations.addComment(newComment))
-
+    setComment('')
   }
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import modalActions from '../../redux/actions/modalActions'
+import DetailsStyled from './ProductDetailsStyled'
 
 
 const ProductDetails = ({
@@ -20,25 +21,26 @@ const ProductDetails = ({
   }
 
   return (
-    <div>
+    <DetailsStyled>
       <img
         src={imageUrl}
-        width="100px"
+        width="300px"
         alt="productPhoto"
         className="productImage"
       />
+      <div className="detailsContainer">
       <p className="title">{name}</p>
       <p className="description">{description}</p>
       <p className="text">
         <span className="label">Count:</span> {count}
       </p>
       <p className="text">
-        <span className="label">Size:</span>
-        {`${width} x ${height}`}
+        <span className="label">Size:</span> {`${width} x ${height}`}
       </p>
       <p className="text">
         <span className="label">Weigth:</span> {weight}
       </p>
+      </div>
       <button
         type="button"
         data-id={id}
@@ -47,7 +49,7 @@ const ProductDetails = ({
       >
         Edit
       </button>
-    </div>
+    </DetailsStyled>
   )
 }
 
